@@ -1,0 +1,60 @@
+### Create a new user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "firstName": "Jen",
+  "lastName": "of Rivia",
+  "email": "jen.rivia@example.com",
+  "password": "password123",
+  "occupation": "F Developer",
+  "picturePath": "path/to/picture.jpg",
+  "coverPath": "path/to/cover.jpg",
+  "location": {
+    "address": "123 Example Street, New York",
+    "latitude": 40.7128,
+    "longitude": -74.0060
+  },
+  "socialMediaLinks": [
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/jen"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/jen"
+    }
+  ]
+}
+
+### List all users (with relations)
+GET http://localhost:3000/users
+
+### List all users (without relations)
+GET http://localhost:3000/users?includeRelations=false
+
+### Find a user by ID (with relations)
+GET http://localhost:3000/users/1
+
+### Find a user by ID (without relations)
+GET http://localhost:3000/users/2?includeRelations=false
+
+### Update a user
+PATCH http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+  "firstName": "John Updated",
+  "occupation": "Software Engineer",
+  "location": {
+    "address": "456 New Avenue, Los Angeles",
+    "latitude": 34.0522,
+    "longitude": -118.2437
+  }
+}
+
+### Remove a user's location
+DELETE http://localhost:3000/users/1/location
+
+### Delete a user
+DELETE http://localhost:3000/users/1
